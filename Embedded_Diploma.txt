@@ -1,0 +1,27 @@
+1-Session 1
+-What is embedded system
+-SOC vs SOB
+-MCU vs MPU
+
+
+2-Session 2
+-binary
+-assembly 
+-C compiler 
+-cross compiler vs native compiler 
+Tasks:
+- why we need hex
+-Compiler vs Interpreter 
+-Convert from decimal to hex
+                 Hex to decimal 
+                 Binary to hex
+                 Hex to binary
+
+
+
+
+what is the binary numbers ?
+how we can convert from decimal to binary ?
+woh we cn deal with binary numbers ? 
+self study :: hexadecimal                                                                   op code والmachine language وال assembly    واتكلمنا علي ال            و كيف بدائةc   تاريخ ال                                                                     وا زاي بيشتغل compiler  التعرف علي                                                 في الامبيدد وايه الفرق بينها وبين الغات التانيه   c ليه بنستخدم ال            وازاي بيشتغل code blocks  التعرف علي                                               التعرف علي notepad++                                                                       
+ايه الفرق بين ال native compiler and cross compiler
