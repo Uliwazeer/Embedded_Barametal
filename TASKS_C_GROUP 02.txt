@@ -1,0 +1,1499 @@
+TASKS_C_GROUP 02 START FROM SESSION NUMBER 16 TILL SESSION NUMBER 30
+
+										#TASK_01.......LEC 16
+
+//HANDLE NEGATIVE NUMBER IN FUNCTION TO USE NEGATIVE NUM TO CONVERT TO STRING 
+
+void IntToString(int num,char *str)
+{
+    int i,n;
+    if (num==0)
+    {
+        str[0]='0';
+        str[1]=0;
+        return;
+    }
+    for(i=0; num>0; i++)
+    {
+        n=num%10;
+        str[i]=n+'0';
+        num=num/10;
+    }
+    //str[i]=0;
+   string_reverse(str);
+    if(num<0)
+    {
+        num=num*-1;
+        for(i=1; num>0; i++)
+        {
+            str[0]='-';
+            n=num%10;
+            str[i]=n+'0';
+            num=num/10;
+        }
+    }
+    str[i]=0;
+    string_reverse(str+1);
+}
+
+int main()
+{
+    
+    char s2[100] ;
+    int x=-12345896;
+    
+     while(1)
+     {
+         scanf("%d",&x);
+         IntToString(x,s2);
+         string_print(s2);
+     }
+}
+***************************************************************************************************
+//SWAP WORDS USING 3 WAY
+//FIRST WAY BEST WAY
+#include <stdio.h>
+
+void reverse_string(char* str, int start, int end) {
+    while (start < end) {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+void swap_words(char* str) {
+    if (str == NULL) {
+        return;
+    }
+
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+
+    reverse_string(str, 0, length - 1);
+
+    int start = 0;
+    int end = 0;
+    while (end <= length) {
+        if (str[end] == ' ' || str[end] == '\0') {
+            reverse_string(str, start, end - 1);
+            start = end + 1;
+        }
+        end++;
+    }
+}
+
+int main() {
+    char str[] = "MUHAMMED WAZEER EL-DEEN NOUR ALI";
+    printf("ORIGINAL STRING IS : %s\n", str);
+    printf("\n");
+    swap_words(str);
+    printf("SWAPPED STRING IS : %s\n", str);
+
+    return 0;
+}
+***************************************************************************************************
+//SECOND WAY
+
+#include <stdio.h>
+#include <stdlib.h>
+int string_length(const char* str) {
+    int length = 0;
+    
+    while (str[length] != '\0') {
+        length++;
+    }
+    
+    return length;
+}
+int main()
+{
+    char str1[]="MUHAMMED WAZEER EL-DEEN NOUR ALI";
+   int i,j,size,max=0;
+   size=string_length(str1);
+   for(i=size-1;i>=0;i--)
+   {
+       if(str1[i]==' ')
+       {
+           max=i;
+           for(j=i+1;j<size;j++)
+           {
+               printf("%c",str1[j]);
+           }
+           printf(" ");
+           size=i;
+           //printf("size=%d\n",size);
+       }
+       if(i==0)
+       {
+           for (j=0;j<size;j++)
+           {
+
+               printf("%c",str1[j]);
+           }
+       }
+   }
+    return 0;
+}
+***************************************************************************************************
+//THIRD WAY
+#include <stdio.h>
+#include <stdlib.h>
+int string_length(const char* str) {
+    int length = 0;
+    
+    while (str[length] != '\0') {
+        length++;
+    }
+    
+    return length;
+}
+void swap_word(char *str)
+{
+
+    int i,j,size,max=0;
+   size=string_length(str);
+   for(i=size-1;i>=0;i--)
+   {
+       if(str[i]==' ')
+       {
+           max=i;
+           for(j=i+1;j<size;j++)
+           {
+               printf("%c",str[j]);
+           }
+           printf(" ");
+           size=i;
+           //printf("size=%d\n",size);
+       }
+       if(i==0)
+       {
+           for (j=0;j<size;j++)
+           {
+
+               printf("%c",str[j]);
+           }
+       }
+   }
+   printf("\n");
+}
+int main()
+{
+    char str[]="MUHAMMED WAZEER EL-DEEN NOUR ALI";
+     //char str[] = "MUHAMMED WAZEER EL-DEEN NOUR ALI";
+   printf("ORIGINAL STRING IS : %s\n", str);
+    printf("\n");
+  
+    printf("SWAPPED STRING IS %c",str);
+      swap_word(str);
+   // printf("SWAPPED STRING IS : %s\n", str);
+   
+    return 0;
+}
+//FOURTH WAY THE BEST WAY
+
+void reverseWord(char*str,int f,int l)
+{
+    char temp;
+    for(;f<=l;)
+    {
+        temp=str[f];
+        str[f]=str[l];
+        str[l]=temp;
+        f++;
+        l--;
+    }
+}
+
+
+void string_reverseWords(char*str)
+{
+    int i,f=0,l,len=string_len(str);
+    reverseWord(str,0,len-1);
+    for(i=0;str[i];i++)
+    {
+        if(str[i]==' ')
+        {
+            l=i-1;
+            reverseWord(str,f,l);
+            f=i+1;
+        }
+        else
+        {
+        }
+    }
+     l=i-1;
+     reverseWord(str,f,l);
+
+}
+
+
+
+int main()
+{
+
+    char str[]="I WORK AS ENGINEER FOR EMBEDDED SOFTWARE FOR 5 YEARS";
+
+    string_print(str);
+    string_reverseWords(str);
+    string_print(str);
+
+    return 0;
+}
+***************************************************************************************************
+//TERNARY OPERATOR (?)
+SYNTAX OF TERNARY OPERATOR
+(condition) ? (variable = Expression2) : (variable = Expression3);
+
+C program to find maximum between two numbers using conditional operator
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+
+    int num1,num2;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+
+
+    int max = (num1 > num2)?num1 : num2;
+
+    printf("MAX NUMBER IS = %d",max);
+
+
+    return 0;
+}
+**********************************************************************************************************
+max number between 3 numbers
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+
+    int num1,num2,num3;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num1);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num2);
+    printf("ENTER YOUR SECOND NUMBER YA USER: ");
+    scanf(" %d",&num3);
+
+    int max = (num1 > num2 && num1 > num3) ? num1 :
+          (num2 > num3) ? num2 : num3;
+
+    printf("MAX NUMBER BETWEEN 3 NUMBERS IS = %d",max);
+
+
+    return 0;
+}
+*****************************************************************************************************************
+EVEN OR ODD NUMBER
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main(void)
+{
+
+    int num;
+    printf("ENTER YOUR FIRST NUMBER YA USER: ");
+    scanf(" %d",&num);
+
+
+  (num%2==0)? printf("YOUR ENTERED NUMBER %d IS EVEN",num):printf("YOUR ENTERED NUMBER %d IS ODD",num);
+
+
+    return 0;
+}
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_02.......LEC 17
+
+ how to read static global varaible from another file with 3 ways
+//FIRST WAY EXTERNAL DECLARATION
+
+file1.c
+static int global_variable = 300;
+extern int global_variable;
+
+file2.c
+extern int global_variable;
+int main(){
+int value = global_variable;
+}
+
+//SECOND WAY FUNCTION ACCESS STATIC GLOBAL VARAIBLE
+file1.c
+static int global_variable = 300;
+int Getter_fun_global_variable(void){
+return global_variable;
+}
+
+file2.c
+#include "file1.c"
+int main(){
+int value = func_global_variable();
+printf("%d",value);
+}
+
+//THIRD WAY AS FILES TO CALL 
+file1.c
+extrn int global_variable;
+
+#include "file1.c"
+static int global_variable = 300;
+
+file2.c
+#include "file1.c"
+int main(){
+int value = global_variable;
+}
+
+//FOURTH WAY USING POINTER
+file1.c
+static int global_variable = 300;
+
+file2.c
+extern int global_variable;
+int main(){
+int *ptr = &global_variable;
+int value = *ptr;
+}
+//FIFTH WAY POINTER
+array.c
+static int x=90;
+int *array1(void)
+{
+	return &x;
+}
+
+main.c
+extern int x;
+int  *p=array1();
+printf("%d",*p);//we can edit about it *p=40; printf("%d",*p);
+//SIXTH WAY IF I WANNA EDIT ABOUT IT
+array.c
+static int x=60;0
+void Setter(int n)
+{
+x=n;
+}
+
+main.c
+int main()
+{
+setter(50);
+}
+***************************************************************************************************
+BENIFTS FROM SECTIONS MEMORY
+***************************************************************************************************
+										#TASK_03.......LEC 18
+TYPES OF MEMORY AND DIFFERENCE BETWEEN THEM CHECK 
+
+1-( https://www.almrsal.com/post/1024429 )
+2-( https://academy.hsoub.com/apps/operating-systems/%D8%A7%D9%84%D8%B0%D8%A7%D9%83%D8%B1%D8%A9-%D9%88%D8%A3%D9%86%D9%88%D8%A7%D8%B9%D9%87%D8%A7-r880/ )
+3-( https://computergii.com/what-is-the-memory-in-comouters/ )
+
+***************************************************************************************************
+Section .Bss Store
+
+1-Global Var Non-Initilaized
+2-Static Local Non-Initilized
+3-Static Local Initilized With Zero
+4-Static Global Var
+***************************************************************************************************
+Why no exist section in .bss in flash ?
+
+The reason why the .bss section, which is typically used for uninitialized variables, 
+does not exist in flash memory is due to the fundamental differences between flash memory and RAM.
+
+Flash memory is a non-volatile memory technology commonly used for storing programs and data in embedded systems and standalone storage devices. 
+It retains information even when power is removed. However, flash memory has limited write endurance and slower write speeds compared to RAM.
+
+On the other hand, the .bss section is a section in the random-access memory (RAM) used to store uninitialized variables in computer programs. 
+It is a reserved space in RAM that is allocated at runtime, and its purpose is to hold variables that do not have an initial value assigned.
+
+The reason why the .bss section is typically located in RAM rather than flash memory is because flash memory has limited write endurance. 
+Writing to flash memory involves erasing entire blocks, which can wear out the memory over time. In contrast, 
+RAM allows for frequent read and write operations without such limitations.
+
+In embedded systems, the initialization of variables in the .bss section typically occurs during the startup process, 
+where the program copies the initial values for uninitialized variables from a source such as flash memory to the .bss section in RAM.
+
+However, it's important to note that memory organization and usage can vary depending on the specific system and application requirements. 
+In some cases, a portion of flash memory may be allocated for storing uninitialized variables, but this is not the most common scenario in embedded programming.
+
+If you have further questions or require more specific information regarding memory allocation in a particular system or application, 
+providing additional context would be helpful in providing a more accurate and detailed answer.
+*************************************************************************************************** 
+Importance of bss section
+
+The purpose of .bss is to reduce executable size and enhance program loading speed. Instead of copying data from disk, 
+the loader can allocate a series of zeroes. This allows the program loader to load .data and .bss into memory during program execution.
+The optimization in the  .bss  segment reduces the size of the executables and improves loading speed. This segment is represented by a single number, 
+which is typically 4 bytes or 8 bytes, indicating its size in the running process. On the other hand, the  
+.data  section's size is determined by the total sum of the initialized variables. Alternatively, the variables could be placed in the  
+.data  segment with explicit initialization to zeroes, and the program would have difficulty distinguishing the difference. 
+It's worth noting that the address of objects in the  .bss  segment may differ from their address if they were in the  .data  segment.
+
+In the initial program,  a  resides within the  .data  segment, while  b  is located in the  .bss  segment of the executable. However, 
+once the program is loaded, this differentiation becomes irrelevant. During runtime,  b  takes up  20 * sizeof(int)  bytes.
+
+The second program allocates space for  var  and modifies that space through the assignment in  main()  . 
+Although the space for  var  was described in the  .bss  segment instead of the  .data  segment, this difference 
+does not impact the program's behavior during execution.
+#include 
+#include 
+int a[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+int b[20]; /* Uninitialized, so in the .bss and will not occupy space for 20 * sizeof (int) */
+int main ()
+{
+   ;
+}  
+
+#include 
+#include 
+int var[10];  /* Uninitialized so in .bss */
+int main ()
+{
+   var[0] = 20  /* **Initialized, where this 'var' will be ?** */
+}
+
+***************************************************************************************************
+Importance of stack
+
+1-( https://www.geeksforgeeks.org/introduction-to-stack-memory/ )
+***************************************************************************************************
+Func take temperatures and give it every time a value
+and design func max & func min to take value and return min and max value
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+int min,max;
+void take_temp(int temp)
+{
+    static int flag;
+    if(flag==0)
+    {
+        max=temp;
+        min=temp;
+        flag=1;
+    }
+    if(temp>max)
+    {
+        max=temp;
+    }
+    if(temp<min)
+    {
+        min=temp;
+    }
+}
+
+int get_max(void)
+{
+    return max;
+}
+int get_min(void)
+{
+   return min;
+}
+int main()
+{
+    int x;
+    take_temp(35);
+     take_temp(5);
+      take_temp(10);
+       take_temp(15);
+        take_temp(50);
+         take_temp(-5);
+         while(1)
+         {
+             scanf("%d",&x);
+             if(x==0)
+                printf("max = %d\n",get_max());
+             else if(x==1)
+                printf("min = %d\n",get_min());
+             else
+                take_temp(x);
+         }
+    return 0;
+}
+***************************************************************************************************
+
+***************************************************************************************************
+										#TASK_04.......LEC 19
+HOW TO GET LAST 10 OF TEMPERATURES DEGREE
+
+#include<stdio.h>
+static int max, min;
+static int array_Temp[10];
+int get_lastTemp(int index)
+{
+    if(index <10 && index >=0)
+        return array_Temp[index];
+    else
+        return 0;
+}
+void create_10_degree(int num)
+{
+    static int i=0;
+    int j=0;
+    if(i==10)
+    {
+        for(j=0; j<9; j++)
+        {
+            array_Temp[j]=array_Temp[j+1];
+        }
+        i--;
+    }
+    array_Temp[i++]= num;
+
+}
+void get_last_10_degree(int *arr)
+{
+    int j=0;
+    for(j=0; j<10; j++)
+    {
+        arr[j]=array_Temp[j];
+    }
+}
+void take_temp(int temp)
+{
+    static int value, flag=1;
+    value=temp;
+    create_10_degree(value);
+    if(flag)
+    {
+        min=temp;
+        max=temp;
+        flag=0;
+    }
+    if(value>max)
+    {
+        max=value;
+    }
+    if(value<min)
+    {
+        min=value;
+    }
+}
+int max_Temp(void)
+{
+    return max;
+}
+int min_Temp(void)
+{
+    return min;
+}
+
+int main()
+{
+    int arr[10]={0} , i=0;
+    printf("%d\n",get_lastTemp(2));
+    for (int i=0;i<15;i++){
+        take_temp(i);
+    }
+    get_last_10_degree(arr);
+    for(i=0;i<10;i++){
+        printf("%d\t", arr[i]);
+    }
+    printf("\n%d\n",get_lastTemp(2));
+
+}
+***************************************************************************************************
+
+***************************************************************************************************
+										#TASK_05.......LEC 20
+
+FUNC BASE OF 2 WITH MANY WAYS
+//FIRST WAY
+int baseOf2_1(int n)
+{
+    return n&&(!(n&(n-1)));
+}
+ //SECOND WAY
+int baseOf2_2(unsigned int n)
+{
+    return n&&(!(0x80000000%n));
+}
+//THIRD WAY
+int baseOf2_3(unsigned int n)
+{
+    if(    (n==0x01)||(n==0x02)||(n==0x04)||(n==0x08)
+        ||(n==0x10)||(n==0x20)||(n==0x40)||(n==0x80)
+       ||(n==0x100)||(n==0x200)||(n==0x400)||(n==0x800))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+//FOURTH WAY USING RECURSIVE FUNC
+int base_of2_recursive (unsigned int num)
+{
+	if (num <= 1)
+	{
+		return num ;
+	}
+	if ((num%2)!=0)
+	{
+		return 0 ;
+	}
+	return ( base_of2_recursive(num/2) );
+}
+
+int main()
+{
+	unsigned int x ;
+	system("cls"); 
+	while(1)
+	{
+		printf("ENTER YOUR NUMBER YA USER:  ");
+		scanf("%d",&x);
+		printf("\nPROCESS TO CHECK YOUR ENTERD NUMBER\n");
+		if (base_of2_recursive(x))
+		{
+			printf("YOUR ENTERED NUMBER %d IS BASE OF 2\n",x);
+		}
+		else 
+		{
+			printf("YOUR ENTERD NUMBER %d IS NOT BASE OF 2\n",x);
+		}
+		printf("\nAGAIN,PLEASE ENTER ANY KEY TO CONTINUE : ");
+		getch();
+		system("cls");
+	}
+	
+	
+	return 0 ;
+}
+***************************************************************************************************
+HOW CN FUNC FREE() KNOW NUMBER OF BYTES TO DEALLOCTE FROM MEMORY......?
+
+The free() is not taking any size as parameter, but only pointer. So the question comes, that how the free() function know about the size of the block to deallocate
+When we use the dynamic memory allocation techniques for memory allocations, then this is done in the actual heap section. 
+It creates one word larger than the requested size. This extra word is used to store the size. 
+This size is used by free() when it wants to clear the memory space.
+1-( https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/free?view=msvc-170 )
+2-( https://www.youtube.com/watch?v=egUvdR3ejKU&t=18s )
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_06.......LEC 21 
+
+
+Handle Negative Values in frequency array in this algorithm
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int array_mostRepeated_Freq(int*arr,int size,int*pnum)
+{
+    int i,max=0,max_n=arr[0],min_n=arr[0],count_size;
+
+    for(i=0; i<size; i++)
+    {
+        if(arr[i]>max_n)
+        {
+            max_n=arr[i];
+        }
+        if(arr[i]<min_n)
+        {
+            min_n=arr[i];
+        }
+    }
+
+    count_size=max_n-min_n+1;
+    int*count=calloc(count_size,sizeof(int));
+    if(count==(void*)0)
+    {
+        /* error*/
+    }
+    else
+    {
+        for(i=0; i<size; i++)
+        {
+            count[arr[i]-min_n]++;
+        }
+        for(i=0; i<count_size; i++)
+        {
+            printf("%-3d   %-3d\n",i+min_n,count[i]);
+        }
+		printf("\n\n=========================\n\n");
+        for(i=0; i<count_size; i++)
+        {
+            if(count[i]>max)
+            {
+                max=count[i];
+                *pnum=i+min_n;
+            }
+        }
+
+    }
+
+    free(count);
+    return max;
+
+}
+
+
+int main()
+{
+	int arr[]= {-99,-10,15,2,8,7,-9,-35,10,18,20,-5,-8,0,2,3,10,18,20,10,-3,25,10,23,-6,-2,-5,15,20,10,10,8};
+	int size = sizeof(arr)/sizeof(arr[0]) , max , num ;
+	
+	max = array_mostRepeated_Freq(arr,size,&num);
+	
+	printf("\n%d is Most repeated %d times\n",num,max);
+	
+	return 0 ;
+}					
+***************************************************************************************************
+
+***************************************************************************************************
+										#TASK_07.......LEC 22
+
+//Binary Search Recurisve
+#include <stdio.h>
+#include <stdlib.h>
+
+int binary_search_rec(int *arr , int f , int l , int search )
+{
+    int middle = (f+l)/2 ;
+    if (f>l)
+    {
+        return -1 ;
+    }
+    if (arr[middle]==search)
+    {
+        return middle ;
+    }
+    if (arr[middle]<search)
+    {
+        f = middle + 1 ;
+    }
+    else
+    {
+        l=middle-1 ;
+    }
+   return binary_search_rec(arr,f,l,search);
+}
+
+void array_print (int *arr , int size)
+{
+    int i ;
+    for (i=0;i<size;i++)
+    {
+        printf("%3d ",arr[i]);
+    }
+    printf("\n\n");
+}
+
+int main()
+{
+    int arr[] = {4,9,8,7,4,1,2,0,4,9,6,5,4,54,5,96,41,96,1,-5,99,-3,-7,58,69,120,125,217,125};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    array_print(arr,size) ;
+    printf("\n");
+	int index = binary_search_rec(arr,0,size-1,125) ; 
+    if ( index != -1 )
+	{
+		printf("found at index %d\n",index) ;
+	}
+	else 
+	{
+		printf("not found\n");
+	}
+
+    return 0;
+}
+***************************************************************************************************
+//SELECTION SORT TO GET MAX INDEX
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int max_element_index (int *arr , int size)
+{
+	int i , max_index = 0 ;
+	
+	for (i=0;i<size;i++)
+	{
+		if (arr[max_index]<arr[i])
+		{
+			max_index = i ;
+		}
+	}
+	return max_index ;
+}
+
+void swap (int *p1 , int *p2)
+{
+	int temp = *p1 ;
+	*p1 = *p2 ;
+	*p2 = temp ;
+}
+
+void array_print (int *arr , int size)
+{
+    int i ;
+    for (i=0;i<size;i++)
+    {
+        printf("%3d ",arr[i]);
+    }
+    printf("\n\n");
+}
+
+void array_selection_sort (int *arr , int size)
+{
+	int i , max_index , last = size ;
+	for (i=0;i<size;i++)
+	{
+		max_index = max_element_index(arr,last);
+		last-- ;
+		swap (&arr[last],&arr[max_index]);
+	}
+}
+
+int main ()
+{
+	
+    int arr[] = {1,99,5,44,22,100,40,30,66,99,-5,99,-3,-7,58,69,120,125,217,125};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    array_print(arr,size) ;
+	printf("\n==========================================\n\n");
+	array_selection_sort(arr,size);
+	array_print(arr,size) ;
+	
+	return 0 ;
+}
+***************************************************************************************************
+//SORTING ALGORITHM IN FREQUANCY ARRAY
+#include <stdio.h>
+#include <stdlib.h>
+
+void array_print (int *arr , int size)
+{
+    int i ;
+    for (i=0;i<size;i++)
+    {
+        printf("%3d ",arr[i]);
+    }
+    printf("\n\n");
+}
+
+void array_counting_sort (int *arr , int size)
+{
+	int i , j = 0 ,max=arr[0] , min=arr[0] , freq_size ;
+	
+	for (i=0;i<size;i++)
+	{
+		if (max < arr[i])
+		{
+			max = arr[i] ;
+		}
+		if (min > arr[i])
+		{
+			min = arr[i] ;
+		}
+	}
+	
+	freq_size = max - min + 1 ;
+	
+	int *freq = calloc (freq_size,sizeof(int));
+	
+	for (i=0;i<size;i++)
+	{
+		freq[arr[i]-min]++ ;
+	}
+	
+	for (i=0;i<freq_size;i++)
+	{
+		while (freq[i]!= 0)
+		{
+			arr[j] = i + min ;
+			j++ ;
+			freq[i]-- ;
+		}
+	}
+	free (freq) ;
+	
+}
+
+int main ()
+{
+	
+    int arr[] = {1,99,5,44,22,100,40,30,66,99,-5,99,-3,-7,58,69,120,125,217,125};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    array_print(arr,size) ;
+	printf("\n");
+	array_counting_sort(arr,size);
+	array_print(arr,size) ;
+	
+	return 0 ;
+}
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_08.......LEC 23
+//COINS LEAST NUMBER OF PAPERS IN MONEY ATM
+//FIRST WAY
+ 
+#include <stdio.h>
+
+int main()
+{
+    int amount;
+    int Egyptian_Pound200, Egyptian_Pound100, Egyptian_Pound50, Egyptian_Pound20, Egyptian_Pound10, Egyptian_Pound5, Egyptian_Pound1;
+    
+    
+    Egyptian_Pound200 = Egyptian_Pound100 = Egyptian_Pound50 = Egyptian_Pound20 = Egyptian_Pound10 = Egyptian_Pound5 = Egyptian_Pound1 = 0;
+
+
+    
+    printf("Enter amount: ");
+    scanf("%d", &amount);
+
+
+    if(amount >= 200)
+    {
+        Egyptian_Pound200 = amount/200;
+        amount -= Egyptian_Pound200 * 200;
+    }
+    if(amount >= 100)
+    {
+        Egyptian_Pound100 = amount/100;
+        amount -= Egyptian_Pound100 * 100;
+    }
+    if(amount >= 50)
+    {
+        Egyptian_Pound50 = amount/50;
+        amount -= Egyptian_Pound50 * 50;
+    }
+    if(amount >= 20)
+    {
+        Egyptian_Pound20 = amount/20;
+        amount -= Egyptian_Pound20 * 20;
+    }
+    if(amount >= 10)
+    {
+        Egyptian_Pound10 = amount/10;
+        amount -= Egyptian_Pound10 * 10;
+    }
+    if(amount >= 5)
+    {
+        Egyptian_Pound5 = amount/5;
+        amount -= Egyptian_Pound5 * 5;
+    }
+    if(amount >= 1)
+    {
+        Egyptian_Pound1 = amount;
+    }
+
+    printf("Total number of Egyptian_Pound = \n");
+    printf("200 = %d\n", Egyptian_Pound200);
+    printf("100 = %d\n", Egyptian_Pound100);
+    printf("50 = %d\n", Egyptian_Pound50);
+    printf("20 = %d\n", Egyptian_Pound20);
+    printf("10 = %d\n", Egyptian_Pound10);
+    printf("5 = %d\n", Egyptian_Pound5);
+    printf("1 = %d\n", Egyptian_Pound1);
+
+    return 0;
+}
+***************************************************************************************************
+//second way
+const int notes[7]= {200,100,50,20,10,5,1};
+int arr[7];
+
+
+void ATM(int n)
+{
+    int i;
+    for(i=0; i<7; i++)
+    {
+        arr[i]=n/notes[i];
+        n=n%notes[i];
+    }
+}
+int main()
+{
+ATM(1478);
+array_print(arr,7);
+
+}
+***************************************************************************************************
+//third way
+void ATM_PRINT(void)
+{
+    int i;
+    for(i=0; i<7; i++)
+    {
+        printf("%d-> %d\n",notes[i],arr[i]);
+    }
+}
+int main()
+{
+ATM(1478);
+ATM_PRINT();
+
+}
+***************************************************************************************************
+// Quick sort With One for loop
+#include <stdlib.h>
+#include <stdio.h>
+
+// function to swap elements
+void swap(int *a, int *b) {
+  int t = *a;
+  *a = *b;
+  *b = t;
+}
+
+int partition(int array[], int low, int high) {
+  int pivot = array[high];
+  int i = (low - 1);
+  for (int j = low; j < high; j++) {
+    if (array[j] <= pivot) {
+      i++;
+      swap(&array[i], &array[j]);
+    }
+  }
+
+  swap(&array[i + 1], &array[high]);
+
+  return (i + 1);
+}
+
+void quickSort(int array[], int low, int high) {
+  if (low < high) {
+    int pi = partition(array, low, high);
+
+    quickSort(array, low, pi - 1);
+    quickSort(array, pi + 1, high);
+  }
+}
+
+
+void printArray(int array[], int size) {
+  for (int i = 0; i < size; ++i) {
+    printf("%d  ", array[i]);
+  }
+  printf("\n");
+}
+
+
+int main() {
+  int data[] = {8, 7, 2, 1, 0,4,5,9,8,7,6,5,2,1,0,6,5,22,30,15,875,65,56,653,56,65,52,52,8562,6,325,265, 9, 6};
+  
+  int n = sizeof(data) / sizeof(data[0]);
+  
+  printf("Unsorted Array\n");
+  printArray(data, n);
+  quickSort(data, 0, n - 1);
+  
+  printf("Sorted array in ascending order: \n");
+  printArray(data, n);
+}
+***************************************************************************************************
+// Counting sort  for rearrange an frequancy arrray
+
+#include <stdio.h>
+
+void countingSort(int array[], int size) {
+  int output[10];
+  int max = array[0];
+  for (int i = 1; i < size; i++) {
+    if (array[i] > max)
+      max = array[i];
+  }
+
+  int count[10];
+
+  for (int i = 0; i <= max; ++i) {
+    count[i] = 0;
+  }
+
+  for (int i = 0; i < size; i++) {
+    count[array[i]]++;
+  }
+
+  for (int i = 1; i <= max; i++) {
+    count[i] += count[i - 1];
+  }
+
+  for (int i = size - 1; i >= 0; i--) {
+    output[count[array[i]] - 1] = array[i];
+    count[array[i]]--;
+  }
+
+  for (int i = 0; i < size; i++) {
+    array[i] = output[i];
+  }
+}
+
+void printArray(int array[], int size) {
+  for (int i = 0; i < size; ++i) {
+    printf("%d  ", array[i]);
+  }
+  printf("\n");
+}
+
+int main() {
+  int array[] = {8, 7, 2, 1, 0,4,5,9,8,7,6,5,2,1,0,6,5,22,30,15,875,65,56,653,56,65,52,52,8562,6,325,265, 9, 6};
+  int n = sizeof(array) / sizeof(array[0]);
+  countingSort(array, n);
+  printArray(array, n);
+}
+***************************************************************************************************
+//Program to count max repeat num in array 
+#include<stdio.h>
+int getMaxRepeatingElement(int array[], int n) 
+{
+    int i, j, maxElement, count;
+     int maxCount = 0;
+    for(i = 0; i< n; i++)   
+    {
+        count = 1;
+        for(j = i+1; j < n; j++)  
+        {
+            if(array[j] == array[i])
+            {
+                count++;     
+                if(count > maxCount)
+                {
+                    maxElement = array[j];
+                }
+            }
+        }
+    }
+    return maxElement;
+}
+
+int main()
+{
+    int n;              
+    printf("Enter the number of elements ");
+    scanf("%d",&n);    
+    int array[n];     
+    printf("Enter the array elements");
+    for(int i=0;i<n;i++)   
+    {
+        scanf("%d",&array[i]);
+    } 
+    int maxElement = getMaxRepeatingElement(array, n);   
+    printf("\n Maximum Repeating Element : %d",maxElement);  
+    return 0;
+}
+***************************************************************************************************
+***************************************************************************************************
+									#TASK_09.......LEC 24
+//func get char and string of position
+#include <stdio.h>
+
+int arrayOfString_searchForChar(char** arr, int size, char ch) {
+    for (int i = 0; i < size; i++) {
+        int j = 0;
+        while (arr[i][j] != '\0') {
+            if (arr[i][j] == ch) {
+                return i; // Return the index of the string where the character is found
+            }
+            j++;
+        }
+    }
+    
+    return -1; // Return -1 if the character is not found in any of the strings
+}
+
+int main() {
+    char* strings[] = {"apple", "banana", "kiwi", "orange", "grape"};
+    int size = sizeof(strings) / sizeof(strings[0]);
+    char ch = 'a';
+    
+    int index = arrayOfString_searchForChar(strings, size, ch);
+    
+    if (index != -1) {
+        printf("Character '%c' found in string at index %d: %s\n", ch, index, strings[index]);
+    } else {
+        printf("Character '%c' not found in any of the strings.\n", ch);
+    }
+    
+    return 0;
+}
+***************************************************************************************************
+//FUNC BINARY SEARCH ARRAY OF POINTERS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Comparison function for string pointers
+int compareStrings(const char* str1, const char* str2) {
+    while (*str1 && (*str1 == *str2)) {
+        str1++;
+        str2++;
+    }
+    return *(const unsigned char*)str1 - *(const unsigned char*)str2;
+}
+
+// Binary search function
+int binarySearch(char** arr, int size, const char* key) {
+    int left = 0;
+    int right = size - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        int cmp = compareStrings(arr[mid], key);
+
+        if (cmp == 0) {
+            return mid; // Key found at index mid
+        } else if (cmp < 0) {
+            left = mid + 1; // Key is greater, search the right half
+        } else {
+            right = mid - 1; // Key is smaller, search the left half
+        }
+    }
+
+    return -1; // Key not found
+}
+
+// Recursive quicksort function
+void quicksort(char** arr, int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quicksort(arr, low, pi - 1);
+        quicksort(arr, pi + 1, high);
+    }
+}
+
+// Partition function for quicksort
+int partition(char** arr, int low, int high) {
+    char* pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (compareStrings(arr[j], pivot) < 0) {
+            i++;
+            swapStrings(&arr[i], &arr[j]);
+        }
+    }
+
+    swapStrings(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
+// Swap two string pointers
+void swapStrings(char** a, char** b) {
+    char* temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    char* strings[] = {"apple", "banana", "grape", "kiwi", "orange"};
+    int size = sizeof(strings) / sizeof(strings[0]);
+
+    // Sort the array of strings using quicksort
+    quicksort(strings, 0, size - 1);
+
+    printf("Sorted array of strings:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%s\n", strings[i]);
+    }
+
+    // Perform binary search
+    const char* key = "kiwi";
+    int index = binarySearch(strings, size, key);
+
+    if (index != -1) {
+        printf("\nKey '%s' found at index %d\n", key, index);
+    } else {
+        printf("\nKey '%s' not found\n", key);
+    }
+
+    return 0;
+}
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_10.......LEC 25
+THERE ARE NO TASKS FOR DONE!!!!!!!!!!!!!!!!!!!!!!!JUST ON HACKERANK
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_11.......LEC 26
+THERE ARE NO TASKS FOR DONE!!!!!!!!!!!!!!!!!!!!!!!
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_12.......LEC 27
+THERE ARE NO TASKS FOR DONE!!!!!!!!!!!!!!!!!!!!!!!
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_13.......LEC 28
+//LIMIT MACRO BETWEEN 2 NUM
+#include <stdio.h>
+
+#define COUNT_NUM_BETWEEN(start, end) ((end) - (start) + 1)
+
+int main() {
+    int start = 5;
+    int end = 10;
+    int count = COUNT_NUM_BETWEEN(start, end);
+
+    printf("Number of integers between %d and %d: %d\n", start, end, count);
+
+    return 0;
+}
+***************************************************************************************************
+//const with typedef pointer
+
+#include <stdio.h>
+
+typedef int* IntPointer;
+typedef const int* ConstIntPointer;
+
+int main() {
+    int num1 = 10;
+    int num2 = 20;
+
+    IntPointer ptr1 = &num1;
+    ConstIntPointer ptr2 = &num2;
+
+    printf("Value through regular pointer: %d\n", *ptr1);
+    printf("Value through constant pointer: %d\n", *ptr2);
+
+    *ptr1 = 100; 
+    *ptr2 = 200; 
+
+    printf("Modified value through regular pointer: %d\n", *ptr1);
+    printf("Value through constant pointer: %d\n", *ptr2);
+
+    return 0;
+} 
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_14.......LEC 29
+THERE ARE NO TASKS FOR DONE!!!!!!!!!!!!!!!!!!!!!!!
+
+***************************************************************************************************
+***************************************************************************************************
+										#TASK_15.......LEC 30
+//SORT ARRAY OF STUDENT
+
+#include <stdio.h>
+#include <string.h>
+struct Student {
+    char name[50];
+    int age;
+    float gpa;
+};
+
+void swap(struct Student* a, struct Student* b) {
+    struct Student temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void bubbleSort(struct Student arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (array_compare(arr[j].name, arr[j + 1].name) > 0) {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
+}
+
+int main() {
+    struct Student students[] = {
+        {"John", 20, 3.8},
+        {"Alice", 19, 3.9},
+        {"Bob", 21, 3.6},
+        {"Emily", 20, 3.7},
+    };
+
+    int numStudents = sizeof(students) / sizeof(students[0]);
+
+    printf("Before sorting:\n");
+    for (int i = 0; i < numStudents; i++) {
+        printf("Name: %s, Age: %d, GPA: %.2f\n",
+               students[i].name, students[i].age, students[i].gpa);
+    }
+
+    bubbleSort(students, numStudents);
+
+    printf("\nAfter sorting by name:\n");
+    for (int i = 0; i < numStudents; i++) {
+        printf("Name: %s, Age: %d, GPA: %.2f\n",
+               students[i].name, students[i].age, students[i].gpa);
+    }
+
+    return 0;
+}
+
+***************************************************************************************************
+//SEARCH FOR STUDENT BY NAME
+#include <stdio.h>
+#include <string.h>
+struct Student {
+    char name[50];
+    int age;
+    float gpa;
+};
+
+// Function to search for a student by name
+struct Student* searchStudentByName(const struct Student arr[], int numStudents, const char* targetName) {
+    for (int i = 0; i < numStudents; i++) {
+        if (strcmp(arr[i].name, targetName) == 0) {
+            return (struct Student*)&arr[i];
+        }
+    }
+    return NULL; // Return NULL if the student is not found
+}
+
+int main() {
+    struct Student students[] = {
+        {"John", 20, 3.8},
+        {"Alice", 19, 3.9},
+        {"Bob", 21, 3.6},
+        {"Emily", 20, 3.7},
+    };
+
+    int numStudents = sizeof(students) / sizeof(students[0]);
+
+    char searchName[50];
+    printf("Enter the name of the student to search: ");
+    scanf("%s", searchName);
+    struct Student* foundStudent = searchStudentByName(students, numStudents, searchName);
+
+    if (foundStudent != NULL) {
+        printf("Student found:\n");
+        printf("Name: %s, Age: %d, GPA: %.2f\n",
+               foundStudent->name, foundStudent->age, foundStudent->gpa);
+    } else {
+        printf("Student not found.\n");
+    }
+
+    return 0;
+}
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+										#FINISHING
+
